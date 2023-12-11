@@ -27,3 +27,22 @@ export const getComments=(article_id)=>{
       return data.comments;
     });
 }
+
+
+
+export const postComment = (article_id, username, body)=>{
+  return fetch(`https://alexis-news-server.onrender.com/api/articles/${article_id}/comments`,{
+    method: 'POST',
+    headers:{'Content-Type':'application/json',},
+    body: JSON.stringify({
+      username: username,
+      body: body,
+    }),
+  })
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    return data.comment;
+  });
+}

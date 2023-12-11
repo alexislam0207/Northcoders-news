@@ -1,16 +1,4 @@
-import { useEffect, useState } from "react";
-import { getAllArticles } from "../api";
-
-const Allarticles = () => {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getAllArticles().then((articles) => {
-      setArticles(articles);
-      setLoading(false);
-    });
-  }, []);
+const Allarticles = ({articles, loading}) => {
 
   if (loading) {
     return <p>loading...</p>;

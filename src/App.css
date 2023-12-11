@@ -4,9 +4,21 @@
   text-align: center;
   background-color: azure;
 }
- header{
+header {
   border: 2px solid lightblue;
   width: fit-content;
   margin: auto;
   padding: 10px;
- }
+}
+
+img {
+  width: 200px;
+}
+li {
+  border: 2px solid cornflowerblue;
+  margin-bottom: 20px;
+}
+ul {
+  list-style-type: none;
+  padding: 2rem;
+}

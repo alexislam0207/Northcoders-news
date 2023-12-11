@@ -1,6 +1,12 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: azure;
 }
+ header{
+  border: 2px solid lightblue;
+  width: fit-content;
+  margin: auto;
+  padding: 10px;
+ }

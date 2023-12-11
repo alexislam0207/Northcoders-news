@@ -14,13 +14,19 @@ header {
 img {
   width: 200px;
 }
+
 li {
   border: 2px solid rgb(122, 161, 232);
   margin-bottom: 20px;
 }
+
 ul {
   list-style-type: none;
-  padding: 2rem;
+  padding: 0;
+}
+
+#comments_list{
+  padding: 0;
 }
 
 .single_article {
@@ -30,4 +36,8 @@ ul {
 
 nav {
   margin: 10px;
+}
+
+.comments_section {
+  padding-top: 20px;
 }

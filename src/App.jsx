@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import NavSection from "./components/NavSection";
 import Allarticles from "./components/Allarticles";
 import { getAllArticles } from "../api";
-import SingleArticle from "./components/SingleArticle";
+import SingleArticle from "./components/SingleArticle/SingleArticle";
 
 function App() {
   const [articles, setArticles] = useState([]);

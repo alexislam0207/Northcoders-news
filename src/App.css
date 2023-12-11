@@ -15,10 +15,19 @@ img {
   width: 200px;
 }
 li {
-  border: 2px solid cornflowerblue;
+  border: 2px solid rgb(122, 161, 232);
   margin-bottom: 20px;
 }
 ul {
   list-style-type: none;
   padding: 2rem;
+}
+
+.single_article {
+  border: 2px solid rgb(122, 161, 232);
+  padding: 10px;
+}
+
+nav {
+  margin: 10px;
 }

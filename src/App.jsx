@@ -1,11 +1,12 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import NavSection from "./components/NavSection";
 import Allarticles from "./components/Allarticles";
 import { getAllArticles } from "../api";
+import SingleArticle from "./components/SingleArticle";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -21,9 +22,21 @@ function App() {
   return (
     <>
       <Header />
-      <NavSection/>
+      <NavSection />
       <Routes>
-      <Route path="/all-articles" element={<Allarticles articles={articles} loading={loading}/>} />
+        <Route
+          path="/all-articles"
+          element={<Allarticles articles={articles} loading={loading} />}
+        />
+        {articles.map((article) => {
+          return (
+            <Route
+              key={article.article_id}
+              path={`/article/${article.article_id}`}
+              element={<SingleArticle article_id={article.article_id} />}
+            />
+          );
+        })}
       </Routes>
     </>
   );

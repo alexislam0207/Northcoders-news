@@ -24,7 +24,7 @@ const SingleArticle = ({ article_id }) => {
     return (
       <>
         <ArticleDeatils article={article} />
-        <Comments comments={comments} />
+        <Comments comments={comments} setComments={setComments}/>
       </>
     );
   }

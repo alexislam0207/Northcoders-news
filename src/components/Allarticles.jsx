@@ -6,7 +6,7 @@ const Allarticles = ({articles, loading}) => {
     return <p>loading...</p>;
   }else{
  return (
-    <ul>
+    <ul id="articles_list">
       {articles.map((article) => {
         return (
           <li key={article.article_id}>

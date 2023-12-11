@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const NavSection = () => {
   return (
-    <div>
-
-    </div>
+    <nav>
+        <Link to="/all-articles">All articles</Link>
+    </nav>
   );
 };
 

@@ -35,6 +35,11 @@ li {
   padding: 10px;
 }
 
+#comment_form{
+  border: 2px solid rgb(122, 161, 232);
+  margin-top: 20px;
+}
+
 nav {
   margin: 10px;
 }

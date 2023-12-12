@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getComments, getSingleArticle } from "../../api";
 import ArticleDeatils from "./ArticleDetails";
 import Comments from "./Comments";
+import PostComment from "./PostComment";
 
 const SingleArticle = ({ article_id }) => {
   const [article, setArticle] = useState({});
@@ -24,6 +25,7 @@ const SingleArticle = ({ article_id }) => {
     return (
       <>
         <ArticleDeatils article={article} setArticle={setArticle} />
+        <PostComment article_id={article_id} setComments={setComments}/>
         <Comments comments={comments} setComments={setComments}/>
       </>
     );

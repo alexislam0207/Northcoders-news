@@ -1,15 +1,15 @@
 import { updateVote } from "../../api";
 
 const ArticleDeatils = ({ article, setArticle }) => {
-  function incrementVote() {
-    updateVote(article.article_id, 1);
-    setArticle({ ...article, votes: article.votes + 1 });
-  }
-  function decrementVote() {
-    updateVote(article.article_id, -1);
-    setArticle({ ...article, votes: article.votes - 1 });
-  }
+  function handleClick(vote) {
+    updateVote(article.article_id, vote).catch(()=>{
+      setArticle((currArticle)=> {return { ...currArticle, votes: currArticle.votes - vote }});
+      alert("Sorry, something went wrong. Please try again later...")
 
+    });
+    setArticle((currArticle)=> {return { ...currArticle, votes: currArticle.votes + vote }});
+  }
+  
   return (
     <section className="single_article">
       <p>{article.title}</p>
@@ -19,8 +19,8 @@ const ArticleDeatils = ({ article, setArticle }) => {
       <p>{article.body}</p>
       <p>Posted on: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
-      <button onClick={incrementVote}>Up vote 👍🏻</button>
-      <button onClick={decrementVote}>Down vote 👎🏻</button>
+      <button onClick={()=>{handleClick(1)}}>Up vote 👍🏻</button>
+      <button onClick={()=>{handleClick(-1)}}>Down vote 👎🏻</button>
     </section>
   );
 };

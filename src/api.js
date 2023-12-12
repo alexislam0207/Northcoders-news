@@ -33,7 +33,7 @@ export const getComments = (article_id) => {
 };
 
 export const updateVote = (article_id, vote) => {
-  fetch(`https://alexis-news-server.onrender.com/api/articles/${article_id}`, {
+  return fetch(`https://alexis-news-server.onrender.com/api/articles/${article_id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

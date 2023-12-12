@@ -10,35 +10,27 @@ import Home from "./components/Home";
 import { getAllTopics } from "./api";
 
 function App() {
-  const [articles, setArticles] = useState([]);
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
-    getAllTopics().then((topics)=>{
+    getAllTopics().then((topics) => {
       setTopics(topics);
-    })
+    });
   }, []);
 
   return (
     <>
       <Header />
-      <NavSection topics={topics}/>
+      <NavSection topics={topics} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/:topic"
-          element={<Allarticles articles={articles} setArticles={setArticles}/>}
+          element={
+            <Allarticles />
+          }
         />
-
-        {articles.length!==0 ?articles.map((article) => {
-          return (
-            <Route
-              key={article.article_id}
-              path={`/article/${article.article_id}`}
-              element={<SingleArticle article_id={article.article_id} />}
-            />
-          );
-        }):null}
+        <Route path="/article/:article_id" element={<SingleArticle />} />
       </Routes>
     </>
   );

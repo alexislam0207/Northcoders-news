@@ -3,8 +3,10 @@ import { getComments, getSingleArticle } from "../../api";
 import ArticleDeatils from "./ArticleDetails";
 import Comments from "./Comments";
 import PostComment from "./PostComment";
+import { useParams } from "react-router-dom";
 
-const SingleArticle = ({ article_id }) => {
+const SingleArticle = () => {
+  const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,8 +27,8 @@ const SingleArticle = ({ article_id }) => {
     return (
       <>
         <ArticleDeatils article={article} setArticle={setArticle} />
-        <PostComment article_id={article_id} setComments={setComments}/>
-        <Comments comments={comments} setComments={setComments}/>
+        <PostComment article_id={article_id} setComments={setComments} />
+        <Comments comments={comments} setComments={setComments} />
       </>
     );
   }

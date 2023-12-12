@@ -2,8 +2,9 @@ import { Link, useParams } from "react-router-dom";
 import { getAllArticles } from "../api";
 import { useEffect, useState } from "react";
 
-const Allarticles = ({ articles, setArticles }) => {
+const Allarticles = () => {
   const { topic } = useParams();
+  const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

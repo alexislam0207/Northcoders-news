@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 
-const NavSection = () => {
+const NavSection = ({ topics }) => {
   return (
     <nav>
-        <Link to="/all-articles">All articles</Link>
+      <Link className="nav_link" to="/all-articles">
+        All articles
+      </Link>
+      {topics.map((topic) => {
+        return (
+          <Link className="nav_link" key={topic.slug} to={`/${topic.slug}`}>
+            {topic.slug}
+          </Link>
+        );
+      })}
     </nav>
   );
 };

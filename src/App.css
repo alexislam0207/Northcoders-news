@@ -44,6 +44,10 @@ nav {
   margin: 10px;
 }
 
+.nav_link{
+  margin: 20px;
+}
+
 .comments_section {
   padding-top: 20px;
 }

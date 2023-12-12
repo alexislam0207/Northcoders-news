@@ -64,3 +64,9 @@ export const postComment = (article_id, username, body) => {
       return data.comment;
     });
 };
+
+export const deleteComment = (comment_id) => {
+  return fetch(`https://alexis-news-server.onrender.com/api/comments/${comment_id}`, {
+    method: "DELETE",
+  });
+};

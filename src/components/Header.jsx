@@ -1,5 +1,9 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
-  return <header>Northcoders news</header>;
+  return <Link to="/">
+  <header>Northcoders news</header>
+  </Link>;
 };
 
 export default Header;

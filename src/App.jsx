@@ -7,6 +7,7 @@ import NavSection from "./components/NavSection";
 import Allarticles from "./components/Allarticles";
 import { getAllArticles } from "../api";
 import SingleArticle from "./components/SingleArticle/SingleArticle";
+import Home from "./components/Home";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -24,6 +25,7 @@ function App() {
       <Header />
       <NavSection />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route
           path="/all-articles"
           element={<Allarticles articles={articles} loading={loading} />}

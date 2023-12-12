@@ -1,17 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getAllArticles } from "../api";
 import { useEffect, useState } from "react";
 
-const Allarticles = ({ articles, setArticles, path }) => {
+const Allarticles = ({ articles, setArticles }) => {
+  const { topic } = useParams();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    getAllArticles(path).then((articles) => {
+    getAllArticles(topic).then((articles) => {
       setArticles(articles);
       setLoading(false);
     });
-  }, [path]);
+  }, [topic]);
 
   if (loading) {
     return <p>loading...</p>;

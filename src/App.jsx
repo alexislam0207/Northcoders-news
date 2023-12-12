@@ -26,18 +26,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
-          path="/all-articles"
-          element={<Allarticles articles={articles} setArticles={setArticles} path=""/>}
+          path="/:topic"
+          element={<Allarticles articles={articles} setArticles={setArticles}/>}
         />
-        {topics.map((topic) => {
-          return (
-            <Route
-              key={topic.slug}
-              path={`/${topic.slug}`}
-              element={<Allarticles articles={articles} setArticles={setArticles} path={topic.slug}/>}
-            />
-          );
-        })}
+
         {articles.length!==0 ?articles.map((article) => {
           return (
             <Route

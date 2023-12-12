@@ -1,8 +1,8 @@
-export const getAllArticles = (path) => {
+export const getAllArticles = (topic) => {
   let url = "https://alexis-news-server.onrender.com/api/articles";
 
-  if (path) {
-    url += `?topic=${path}`;
+  if (topic !== "all-articles") {
+    url += `?topic=${topic}`;
   }
 
   return fetch(url)

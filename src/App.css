@@ -42,3 +42,7 @@ nav {
 .comments_section {
   padding-top: 20px;
 }
+
+button{
+  background-color: transparent;
+}

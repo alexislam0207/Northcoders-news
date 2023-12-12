@@ -23,7 +23,7 @@ const SingleArticle = ({ article_id }) => {
   } else {
     return (
       <>
-        <ArticleDeatils article={article} />
+        <ArticleDeatils article={article} setArticle={setArticle} />
         <Comments comments={comments} />
       </>
     );

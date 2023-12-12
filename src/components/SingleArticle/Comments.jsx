@@ -1,4 +1,8 @@
-const Comments = ({ comments }) => {
+import CommentDetails from "./CommentDetails";
+
+const Comments = ({ comments, setComments }) => {
+  const username = "jessjelly";
+
   if (comments.length === 0) {
     return (
       <div className="comments_section">
@@ -12,13 +16,20 @@ const Comments = ({ comments }) => {
         <h2>Comments:</h2>
         <ul id="comments_list">
           {comments.map((comment) => {
-            return (
-              <li key={comment.comment_id}>
-                <p>Author: {comment.author}</p>
-                <p>{comment.body}</p>
-                <p>Posted on: {comment.created_at}</p>
-                <p>Votes: {comment.votes}</p>
-              </li>
+            return comment.author === username ? (
+              <CommentDetails
+                comment={comment}
+                setComments={setComments}
+                bySameUser={true}
+                key={comment.comment_id}
+              />
+            ) : (
+              <CommentDetails
+                comment={comment}
+                setComments={setComments}
+                bySameUser={false}
+                key={comment.comment_id}
+              />
             );
           })}
         </ul>

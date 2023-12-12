@@ -1,10 +1,26 @@
-export const getAllArticles = () => {
-  return fetch("https://alexis-news-server.onrender.com/api/articles")
+export const getAllArticles = (topic) => {
+  let url = "https://alexis-news-server.onrender.com/api/articles";
+
+  if (topic !== "all-articles") {
+    url += `?topic=${topic}`;
+  }
+
+  return fetch(url)
     .then((res) => {
       return res.json();
     })
     .then((data) => {
       return data.articles;
+    });
+};
+
+export const getAllTopics = () => {
+  return fetch("https://alexis-news-server.onrender.com/api/topics")
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      return data.topics;
     });
 };
 
@@ -66,7 +82,10 @@ export const postComment = (article_id, username, body) => {
 };
 
 export const deleteComment = (comment_id) => {
-  return fetch(`https://alexis-news-server.onrender.com/api/comments/${comment_id}`, {
-    method: "DELETE",
-  });
+  return fetch(
+    `https://alexis-news-server.onrender.com/api/comments/${comment_id}`,
+    {
+      method: "DELETE",
+    }
+  );
 };

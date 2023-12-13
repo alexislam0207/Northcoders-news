@@ -89,3 +89,13 @@ export const deleteComment = (comment_id) => {
     }
   );
 };
+
+export const getAllUsers = () => {
+  return fetch("https://alexis-news-server.onrender.com/api/users")
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      return data.users;
+    });
+};

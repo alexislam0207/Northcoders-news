@@ -1,10 +1,12 @@
-export const getAllArticles = (topic) => {
+export const getAllArticles = (topic, query, order) => {
   let url = "https://alexis-news-server.onrender.com/api/articles";
 
   if (topic !== "all-articles") {
-    url += `?topic=${topic}`;
+    url += `?topic=${topic}&sort_by=${query}&order=${order}`;
+  }else{
+    url +=`?sort_by=${query}&order=${order}`
   }
-
+console.log(url);
   return fetch(url)
     .then((res) => {
       return res.json();

@@ -1,7 +1,10 @@
 import CommentDetails from "./CommentDetails";
+import { useContext } from "react";
+import { UserContext } from "../contexts/User";
 
 const Comments = ({ comments, setComments }) => {
-  const username = "jessjelly";
+  const { user } = useContext(UserContext);
+
 
   if (comments.length === 0) {
     return (
@@ -16,7 +19,7 @@ const Comments = ({ comments, setComments }) => {
         <h2>Comments:</h2>
         <ul id="comments_list">
           {comments.map((comment) => {
-            return comment.author === username ? (
+            return comment.author === user ? (
               <CommentDetails
                 comment={comment}
                 setComments={setComments}

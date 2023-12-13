@@ -7,23 +7,17 @@ const Allarticles = () => {
   const { topic } = useParams();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState("created_at");
   const [orderBy, setOrderBy] = useState("desc");
-  
-  useEffect(() => {
-    setSearchParams({
-      sort_by: "created_at",
-      order: "desc",
-    });
-  }, [topic]);
 
   useEffect(() => {
     setLoading(true);
-    getAllArticles(topic, sortBy, orderBy).then((articles) => {
+    getAllArticles(topic, sortBy, orderBy, page).then((articles) => {
       setArticles(articles);
       setLoading(false);
     });
-  }, [topic, sortBy, orderBy]);
+  }, [topic, sortBy, orderBy, page]);
 
   function handleQueryChange(e) {
     const newParams = new URLSearchParams(searchParams);
@@ -70,6 +64,22 @@ const Allarticles = () => {
             );
           })}
         </ul>
+        <button
+          onClick={() => {
+            setPage((currentPage) => currentPage - 1);
+          }}
+          disabled={page === 1}
+        >
+          Previous Page
+        </button>
+        <button
+          onClick={() => {
+            setPage((currentPage) => currentPage + 1);
+          }}
+          disabled={articles.length < 10}
+        >
+          Next Page
+        </button>
       </>
     );
   }

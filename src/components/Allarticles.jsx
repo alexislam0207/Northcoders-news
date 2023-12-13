@@ -1,27 +1,41 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { getAllArticles } from "../api";
 import { useEffect, useState } from "react";
 
 const Allarticles = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { topic } = useParams();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState("created_at");
-  const [order, setOrder] = useState("desc");
+  const [sortBy, setSortBy] = useState("created_at");
+  const [orderBy, setOrderBy] = useState("desc");
+  
+  useEffect(() => {
+    setSearchParams({
+      sort_by: "created_at",
+      order: "desc",
+    });
+  }, [topic]);
 
   useEffect(() => {
     setLoading(true);
-    getAllArticles(topic, query, order).then((articles) => {
+    getAllArticles(topic, sortBy, orderBy).then((articles) => {
       setArticles(articles);
       setLoading(false);
     });
-  }, [topic, query, order]);
+  }, [topic, sortBy, orderBy]);
 
   function handleQueryChange(e) {
-    setQuery(e.target.value);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("sort_by", e.target.value);
+    setSearchParams(newParams);
+    setSortBy(e.target.value);
   }
   function handleOrderChange(e) {
-    setOrder(e.target.value);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("order", e.target.value);
+    setSearchParams(newParams);
+    setOrderBy(e.target.value);
   }
 
   if (loading) {
@@ -31,12 +45,12 @@ const Allarticles = () => {
       <>
         <label>
           Sort by
-          <select value={query} onChange={handleQueryChange}>
+          <select value={sortBy} onChange={handleQueryChange}>
             <option value="created_at">date</option>
             <option value="votes">votes</option>
             <option value="comment_count">comment count</option>
           </select>
-          <select value={order} onChange={handleOrderChange}>
+          <select value={orderBy} onChange={handleOrderChange}>
             <option value="asc">ascending</option>
             <option value="desc">descending</option>
           </select>

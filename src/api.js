@@ -3,10 +3,9 @@ export const getAllArticles = (topic, query, order) => {
 
   if (topic !== "all-articles") {
     url += `?topic=${topic}&sort_by=${query}&order=${order}`;
-  }else{
-    url +=`?sort_by=${query}&order=${order}`
+  } else {
+    url += `?sort_by=${query}&order=${order}`;
   }
-console.log(url);
   return fetch(url)
     .then((res) => {
       return res.json();

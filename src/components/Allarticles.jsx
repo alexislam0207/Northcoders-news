@@ -19,7 +19,7 @@ const Allarticles = () => {
       })
       .catch((err) => {
         setLoading(false);
-        setApiError(err);
+        setApiError(err.response.data);
       });
   }, [topic]);
 

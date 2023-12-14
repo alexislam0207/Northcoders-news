@@ -31,8 +31,8 @@ const SingleArticle = () => {
   if (loading) {
     return <p>loading...</p>;
   } else if (apiError) {
-    console.log(apiError.msg);
-    // return <Error msg={apiError.msg} />;
+    // console.log(typeof apiError.msg, apiError.msg, "<---single article");
+    return <Error msg={apiError.msg} />;
   } else {
     return (
       <>

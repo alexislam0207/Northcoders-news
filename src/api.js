@@ -1,3 +1,8 @@
+import axios from "axios";
+const newsApi = axios.create({
+  baseURL: "https://alexis-news-server.onrender.com/api",
+});
+
 export const getAllArticles = (topic) => {
   let url = "https://alexis-news-server.onrender.com/api/articles";
 
@@ -7,24 +12,23 @@ export const getAllArticles = (topic) => {
 
   return fetch(url)
     .then((res) => {
+      // if(!res.ok){
+      //   console.log(res);
+      // }
       return res.json();
     })
     .then((data) => {
-      if(data.msg){
-        return Promise.reject({msg:data.msg})
+      if (data.msg) {
+        return Promise.reject({ msg: data.msg });
       }
       return data.articles;
     });
 };
 
 export const getAllTopics = () => {
-  return fetch("https://alexis-news-server.onrender.com/api/topics")
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      return data.topics;
-    });
+  return newsApi.get("/topics").then((response) => {
+    return response.data.topics;
+  });
 };
 
 export const getSingleArticle = (article_id) => {
@@ -35,8 +39,8 @@ export const getSingleArticle = (article_id) => {
       return res.json();
     })
     .then((data) => {
-      if(data.msg){
-        return Promise.reject({msg:data.msg})
+      if (data.msg) {
+        return Promise.reject({ msg: data.msg });
       }
       return data.article;
     });
@@ -50,9 +54,6 @@ export const getComments = (article_id) => {
       return res.json();
     })
     .then((data) => {
-      if(data.msg){
-        return Promise.reject({msg:data.msg})
-      }
       return data.comments;
     });
 };
@@ -71,40 +72,22 @@ export const updateVote = (article_id, vote) => {
 };
 
 export const postComment = (article_id, username, body) => {
-  return fetch(
-    `https://alexis-news-server.onrender.com/api/articles/${article_id}/comments`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: username,
-        body: body,
-      }),
-    }
-  )
-    .then((res) => {
-      return res.json();
+  return newsApi
+    .post(`/articles/${article_id}/comments`, {
+      username: username,
+      body: body,
     })
-    .then((data) => {
-      return data.comment;
+    .then((response) => {
+      return response.data.comment;
     });
 };
 
 export const deleteComment = (comment_id) => {
-  return fetch(
-    `https://alexis-news-server.onrender.com/api/comments/${comment_id}`,
-    {
-      method: "DELETE",
-    }
-  );
+  return newsApi.delete(`/comments/${comment_id}`);
 };
 
 export const getAllUsers = () => {
-  return fetch("https://alexis-news-server.onrender.com/api/users")
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      return data.users;
-    });
+  return newsApi.get("/users").then((response) => {
+    return response.data.users;
+  });
 };

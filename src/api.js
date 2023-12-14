@@ -59,16 +59,7 @@ export const getComments = (article_id) => {
 };
 
 export const updateVote = (article_id, vote) => {
-  return fetch(
-    `https://alexis-news-server.onrender.com/api/articles/${article_id}`,
-    {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ inc_votes: vote }),
-    }
-  );
+  return newsApi.patch(`/articles/${article_id}`, { inc_votes: vote });
 };
 
 export const postComment = (article_id, username, body) => {

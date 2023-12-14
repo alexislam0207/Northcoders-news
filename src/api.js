@@ -10,6 +10,9 @@ export const getAllArticles = (topic) => {
       return res.json();
     })
     .then((data) => {
+      if(data.msg){
+        return Promise.reject({msg:data.msg})
+      }
       return data.articles;
     });
 };
@@ -32,6 +35,9 @@ export const getSingleArticle = (article_id) => {
       return res.json();
     })
     .then((data) => {
+      if(data.msg){
+        return Promise.reject({msg:data.msg})
+      }
       return data.article;
     });
 };
@@ -44,6 +50,9 @@ export const getComments = (article_id) => {
       return res.json();
     })
     .then((data) => {
+      if(data.msg){
+        return Promise.reject({msg:data.msg})
+      }
       return data.comments;
     });
 };

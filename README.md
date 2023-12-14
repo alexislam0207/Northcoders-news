@@ -12,11 +12,14 @@ https://github.com/alexislam0207/news-server
 ## Instructions
 To run this project locally, input the following to your terminal:
 > cd <-insert chosen folder->
+
 > git clone https://github.com/alexislam0207/Northcoders-news.git
+
 > code Northcoders-news
 
 Then input the following to your VSCode terminal:
 > npm install
+
 > npm run dev
 
 Node v18.12.1 is required for this project.

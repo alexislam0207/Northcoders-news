@@ -4,24 +4,14 @@ const newsApi = axios.create({
 });
 
 export const getAllArticles = (topic) => {
-  let url = "https://alexis-news-server.onrender.com/api/articles";
-
-  if (topic !== "all-articles") {
-    url += `?topic=${topic}`;
-  }
-
-  return fetch(url)
-    .then((res) => {
-      // if(!res.ok){
-      //   console.log(res);
-      // }
-      return res.json();
+  return newsApi
+    .get("/articles", {
+      params: {
+        topic: topic !== "all-articles" ? topic : null,
+      },
     })
-    .then((data) => {
-      if (data.msg) {
-        return Promise.reject(data);
-      }
-      return data.articles;
+    .then((response) => {
+      return response.data.articles;
     });
 };
 
@@ -34,13 +24,13 @@ export const getAllTopics = () => {
 export const getSingleArticle = (article_id) => {
   return newsApi.get(`/articles/${article_id}`).then((response) => {
     return response.data.article;
-  })
+  });
 };
 
 export const getComments = (article_id) => {
   return newsApi.get(`/articles/${article_id}/comments`).then((response) => {
     return response.data.comments;
-  })
+  });
 };
 
 export const updateVote = (article_id, vote) => {

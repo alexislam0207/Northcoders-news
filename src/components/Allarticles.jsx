@@ -26,7 +26,6 @@ const Allarticles = () => {
   if (loading) {
     return <p>loading...</p>;
   } else if (apiError) {
-    // console.log(typeof apiError.msg,apiError.msg , "<---all article");
     return <Error msg={apiError.msg} />;
   } else {
     return (

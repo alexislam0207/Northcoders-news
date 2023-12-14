@@ -4,6 +4,7 @@ import ArticleDeatils from "./ArticleDetails";
 import Comments from "./Comments";
 import PostComment from "./PostComment";
 import { useParams } from "react-router-dom";
+import Error from "../Error";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -31,7 +32,6 @@ const SingleArticle = () => {
   if (loading) {
     return <p>loading...</p>;
   } else if (apiError) {
-    console.log(typeof apiError.msg, apiError, "<---single article");
     return <Error msg={apiError.msg} />;
   } else {
     return (

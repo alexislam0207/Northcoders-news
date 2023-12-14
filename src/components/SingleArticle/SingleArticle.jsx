@@ -24,14 +24,14 @@ const SingleArticle = () => {
       })
       .catch((err) => {
         setLoading(false);
-        setApiError(err);
+        setApiError(err.response.data);
       });
   }, []);
 
   if (loading) {
     return <p>loading...</p>;
   } else if (apiError) {
-    // console.log(typeof apiError.msg, apiError.msg, "<---single article");
+    console.log(typeof apiError.msg, apiError, "<---single article");
     return <Error msg={apiError.msg} />;
   } else {
     return (

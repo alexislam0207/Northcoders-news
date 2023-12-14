@@ -19,7 +19,7 @@ export const getAllArticles = (topic) => {
     })
     .then((data) => {
       if (data.msg) {
-        return Promise.reject({ msg: data.msg });
+        return Promise.reject(data);
       }
       return data.articles;
     });
@@ -32,30 +32,15 @@ export const getAllTopics = () => {
 };
 
 export const getSingleArticle = (article_id) => {
-  return fetch(
-    `https://alexis-news-server.onrender.com/api/articles/${article_id}`
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      if (data.msg) {
-        return Promise.reject({ msg: data.msg });
-      }
-      return data.article;
-    });
+  return newsApi.get(`/articles/${article_id}`).then((response) => {
+    return response.data.article;
+  })
 };
 
 export const getComments = (article_id) => {
-  return fetch(
-    `https://alexis-news-server.onrender.com/api/articles/${article_id}/comments`
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      return data.comments;
-    });
+  return newsApi.get(`/articles/${article_id}/comments`).then((response) => {
+    return response.data.comments;
+  })
 };
 
 export const updateVote = (article_id, vote) => {

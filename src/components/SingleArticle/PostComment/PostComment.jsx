@@ -41,7 +41,7 @@ const PostComment = ({ article_id, setComments }) => {
       />
       <button id="com_btn" disabled={!user}>submit</button>
       {error ? (
-        <p className="com_error">please select an avatar for posting comment</p>
+        <p className="com_error">please select a user for posting comment</p>
       ) : null}
     </form>
   );

@@ -20,8 +20,10 @@ const Home = () => {
 
   return (
     <div id="home">
-      <p id="home_title">Hello{user ? ` ${user}` : null}!
-      <br/>Please select an avatar below</p>
+      {user ?<p id="home_title">Hello {user}!</p> : null}
+      <p id="home_subtitle">Welcome to Northcoders news where you can check out articles posted by fellow Northcoders.
+      <br/>Please select an user profile below If you wish to comment on an article.
+      <br/>{user ? `*you are logged in as ${user}` :null}</p>
       {loading ? <p>loading</p> : null}<div id="user_list">
       {users.map((user) => {
         return (

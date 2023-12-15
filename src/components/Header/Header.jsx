@@ -11,7 +11,7 @@ const Header = () => {
       <header>
         <h1>Northcoders news</h1>
         <p id="header_note">
-          {user ? `you are logged in as ${user}` : "Select an avatar"}
+          {user ? `*you are logged in as ${user}` : "Select a user"}
         </p>
       </header>
     </Link>

@@ -1,4 +1,20 @@
 .single_article {
-    border: 2px solid rgb(122, 161, 232);
     padding: 10px;
+  }
+
+  .sing_art_title{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  .art_body{
+    text-align: left;
+    padding-top: 10px;
+  }
+
+  .vote_btn{
+    border-radius: 5px;
+    margin-left: 10px;   
+    background-color: azure; 
   }

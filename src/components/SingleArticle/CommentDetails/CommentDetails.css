@@ -1,0 +1,15 @@
+.com_card{
+    border-top: 3px solid lightblue;
+    text-align: left;
+    padding: 10px;
+    padding-bottom: 0;
+    padding-top: 20px;
+}
+
+.com_notes{
+    font-size: 0.8rem;
+}
+.del_com_btn{
+border-radius: 5px;
+background-color: azure;
+}

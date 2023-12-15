@@ -17,7 +17,7 @@ const Comments = ({ comments, setComments }) => {
   } else {
     return (
       <div className="comments_section">
-        <h2>Comments:</h2>
+        <h3 id="com_header">Comments:</h3>
         <ul id="comments_list">
           {comments.map((comment) => {
             return comment.author === user ? (

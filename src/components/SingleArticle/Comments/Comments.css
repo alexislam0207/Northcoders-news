@@ -6,3 +6,8 @@
   .comments_section {
     padding-top: 20px;
   }
+
+  #com_header{
+    text-decoration: underline;
+    font-weight: bold;
+  }

@@ -16,21 +16,21 @@ const ArticleDeatils = ({ article, setArticle }) => {
 
   return (
     <section className="single_article">
-      <p>{article.title}</p>
-      <img src={article.article_img_url} alt="article" />
-      <p>Author: {article.author}</p>
-      <p>Topic: {article.topic}</p>
-      <p>{article.body}</p>
-      <p>Posted on: {article.created_at}</p>
-      <p>Votes: {article.votes}</p>
-      <button
+      <p className="sing_art_title">{article.title}</p>
+      <img className="art_img" src={article.article_img_url} alt="article" />
+      <p className="art_body">{article.body}</p>
+      <p>Author: {article.author}
+      <br/>Topic: {article.topic}
+      <br/>Posted on: {article.created_at.slice(0,10)} {article.created_at.slice(11, 16)}
+      <br/>Votes: {article.votes}</p>
+      <button className="vote_btn"
         onClick={() => {
           handleClick(1);
         }}
       >
         Up vote 👍🏻
       </button>
-      <button
+      <button className="vote_btn"
         onClick={() => {
           handleClick(-1);
         }}

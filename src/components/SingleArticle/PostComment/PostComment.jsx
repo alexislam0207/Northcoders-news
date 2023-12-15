@@ -2,7 +2,7 @@ import { useState } from "react";
 import { postComment } from "../../../api";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/User";
-import "./PostComment.css"
+import "./PostComment.css";
 
 const PostComment = ({ article_id, setComments }) => {
   const [body, setBody] = useState("");
@@ -31,17 +31,18 @@ const PostComment = ({ article_id, setComments }) => {
 
   return (
     <form id="comment_form" onSubmit={handleSubmit}>
-      <label>
-        What do you think about this article?
-        <input
-          value={body}
-          onChange={handleChange}
-          type="text"
-          placeholder="add a comment..."
-        />
-      </label>
-      {error ? <p className="error">please select an avatar for posting comment</p> : null}
-      <button disabled={!user}>submit</button>
+      <label htmlFor="com_input">What do you think about this article?</label>
+      <br/><input
+        id="com_input"
+        value={body}
+        onChange={handleChange}
+        type="text"
+        placeholder="add a comment..."
+      />
+      <button id="com_btn" disabled={!user}>submit</button>
+      {error ? (
+        <p className="com_error">please select an avatar for posting comment</p>
+      ) : null}
     </form>
   );
 };

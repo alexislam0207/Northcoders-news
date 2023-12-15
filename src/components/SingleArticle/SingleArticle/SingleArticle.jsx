@@ -36,11 +36,11 @@ const SingleArticle = () => {
     return <Error msg={apiError.msg} />;
   } else {
     return (
-      <>
+      <div id="single_art">
         <ArticleDeatils article={article} setArticle={setArticle} />
         <PostComment article_id={article_id} setComments={setComments} />
         <Comments comments={comments} setComments={setComments} />
-      </>
+      </div>
     );
   }
 };

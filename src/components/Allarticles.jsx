@@ -1,7 +1,8 @@
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { getAllArticles } from "../api";
 import { useEffect, useState } from "react";
 import Error from "./Error";
+import ArticleCard from "./ArticleCard";
 
 const Allarticles = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -59,16 +60,7 @@ const Allarticles = () => {
         </label>
         <ul id="articles_list">
           {articles.map((article) => {
-            return (
-              <li key={article.article_id}>
-                <p>{article.title}</p>
-                <img src={article.article_img_url} alt="article" />
-                <p>Author: {article.author}</p>
-                <p>Topic: {article.topic}</p>
-                <p>Comment count: {article.comment_count}</p>
-                <p>Votes: {article.votes}</p>
-                <Link to={`/article/${article.article_id}`}>More datails</Link>
-              </li>
+            return (<ArticleCard article={article} key={article.article_id}/>
             );
           })}
         </ul>

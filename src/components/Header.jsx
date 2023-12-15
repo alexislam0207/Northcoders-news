@@ -6,14 +6,12 @@ const Header = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <>
-      <Link to="/">
-        <header>Northcoders news</header>
-      </Link>
-      <p>{user ? `you are logged in as${user}` : "Please select an avatar on Home page"
-
-}</p>
-    </>
+    <Link to="/">
+      <header>
+        <h1>Northcoders news</h1>
+        <p id="header_note">{user ? `you are logged in as ${user}` : "Select an avatar"}</p>
+      </header>
+    </Link>
   );
 };
 

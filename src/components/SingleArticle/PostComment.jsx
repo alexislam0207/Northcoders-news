@@ -6,9 +6,15 @@ import { UserContext } from "../contexts/User";
 const PostComment = ({ article_id, setComments }) => {
   const [body, setBody] = useState("");
   const { user } = useContext(UserContext);
+  const [error, setError] = useState(false);
 
   function handleChange(e) {
-    setBody(e.target.value);
+    if (!user) {
+      setError(true);
+    } else {
+      setError(false);
+      setBody(e.target.value);
+    }
   }
 
   function handleSubmit(e) {
@@ -33,7 +39,8 @@ const PostComment = ({ article_id, setComments }) => {
           placeholder="add a comment..."
         />
       </label>
-      <button>submit</button>
+      {error ? <p className="error">please select an avatar for posting comment</p> : null}
+      <button disabled={!user}>submit</button>
     </form>
   );
 };

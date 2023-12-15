@@ -1,6 +1,7 @@
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { getAllArticles } from "../api";
 import { useEffect, useState } from "react";
+import Error from "./Error";
 
 const Allarticles = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -10,12 +11,17 @@ const Allarticles = () => {
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState("created_at");
   const [orderBy, setOrderBy] = useState("desc");
+  const [apiError, setApiError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
     getAllArticles(topic, sortBy, orderBy, page).then((articles) => {
+      setApiError(null);
       setArticles(articles);
       setLoading(false);
+    }).catch((err) => {
+      setLoading(false);
+      setApiError(err.response.data);
     });
   }, [topic, sortBy, orderBy, page]);
 
@@ -34,6 +40,8 @@ const Allarticles = () => {
 
   if (loading) {
     return <p>loading...</p>;
+  } else if (apiError) {
+    return <Error msg={apiError.msg} />;
   } else {
     return (
       <>

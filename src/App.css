@@ -8,9 +8,14 @@ header {
   border: 2px solid lightblue;
   width: fit-content;
   margin: auto;
-  padding: 10px;
+  padding: 20px;
+  padding-bottom: 0;
+  color: navy;
 }
-
+#header_note{
+  color: black;
+  text-decoration: underline azure;
+}
 img {
   width: 200px;
 }
@@ -34,6 +39,20 @@ li {
   border: 2px solid rgb(122, 161, 232);
   padding: 10px;
 }
+#home {
+  border: 2px solid rgb(122, 161, 232);
+  padding: 10px;
+}
+.user{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 2px solid rgb(122, 161, 232);
+}
+
+.error{
+  color: red;
+  border: 2px solid red;
+}
 
 #comment_form{
   border: 2px solid rgb(122, 161, 232);
@@ -45,7 +64,7 @@ nav {
 }
 
 .nav_link{
-  margin: 20px;
+  margin: 5px;
 }
 
 .comments_section {

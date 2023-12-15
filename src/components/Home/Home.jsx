@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from "./contexts/User";
-import { getAllUsers } from "../api";
+import { UserContext } from "../contexts/User";
+import { getAllUsers } from "../../api";
+import "./Home.css"
 
 const Home = () => {
   const { user, setUser } = useContext(UserContext);
@@ -19,21 +20,21 @@ const Home = () => {
 
   return (
     <div id="home">
-      <p>Hello{user ? ` ${user}` : null}!</p>
-      <p>Please select an avatar below</p>
-      {loading?<p>loading</p>:null}
+      <p id="home_title">Hello{user ? ` ${user}` : null}!
+      <br/>Please select an avatar below</p>
+      {loading ? <p>loading</p> : null}<div id="user_list">
       {users.map((user) => {
         return (
           <div key={user.username} className="user">
-            <p>{user.username}</p>
-            <p>Full name: {user.name}</p>
-            <img src={user.avatar_url} alt="user" />
-            <button value={user.username} onClick={handleClick}>
+            <p className="username">{user.username}</p>
+            <p className="name">Full name: {user.name}</p>
+            <img className="user_pics" src={user.avatar_url} alt="user" /><br/>
+            <button className="user_btn" value={user.username} onClick={handleClick}>
               choose me!
             </button>
           </div>
         );
-      })}
+      })}</div>
     </div>
   );
 };

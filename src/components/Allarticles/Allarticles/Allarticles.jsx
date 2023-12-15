@@ -1,8 +1,9 @@
 import { useParams, useSearchParams } from "react-router-dom";
-import { getAllArticles } from "../api";
+import { getAllArticles } from "../../../api";
 import { useEffect, useState } from "react";
-import Error from "./Error";
-import ArticleCard from "./ArticleCard";
+import Error from "../../Error/Error";
+import ArticleCard from "../ArticleCard/ArticleCard";
+import "./Allarticles.css"
 
 const Allarticles = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,14 +17,16 @@ const Allarticles = () => {
 
   useEffect(() => {
     setLoading(true);
-    getAllArticles(topic, sortBy, orderBy, page).then((articles) => {
-      setApiError(null);
-      setArticles(articles);
-      setLoading(false);
-    }).catch((err) => {
-      setLoading(false);
-      setApiError(err.response.data);
-    });
+    getAllArticles(topic, sortBy, orderBy, page)
+      .then((articles) => {
+        setApiError(null);
+        setArticles(articles);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setApiError(err.response.data);
+      });
   }, [topic, sortBy, orderBy, page]);
 
   function handleQueryChange(e) {
@@ -48,20 +51,19 @@ const Allarticles = () => {
       <>
         <label>
           Sort by
-          <select value={sortBy} onChange={handleQueryChange}>
+          <select id="sort_by" value={sortBy} onChange={handleQueryChange}>
             <option value="created_at">date</option>
             <option value="votes">votes</option>
             <option value="comment_count">comment count</option>
           </select>
-          <select value={orderBy} onChange={handleOrderChange}>
+          <select id="order_by" value={orderBy} onChange={handleOrderChange}>
             <option value="asc">ascending</option>
             <option value="desc">descending</option>
           </select>
         </label>
         <ul id="articles_list">
           {articles.map((article) => {
-            return (<ArticleCard article={article} key={article.article_id}/>
-            );
+            return <ArticleCard article={article} key={article.article_id} />;
           })}
         </ul>
         <button

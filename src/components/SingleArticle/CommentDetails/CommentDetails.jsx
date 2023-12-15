@@ -1,4 +1,5 @@
-import { deleteComment } from "../../api";
+import { deleteComment } from "../../../api";
+import "./CommentDetails.css"
 
 const CommentDetails = ({ comment, setComments, bySameUser }) => {
     function handleClick(comment_id) {

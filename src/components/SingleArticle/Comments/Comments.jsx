@@ -1,6 +1,7 @@
-import CommentDetails from "./CommentDetails";
+import CommentDetails from "../CommentDetails/CommentDetails";
 import { useContext } from "react";
-import { UserContext } from "../contexts/User";
+import { UserContext } from "../../contexts/User";
+import "./Comments.css"
 
 const Comments = ({ comments, setComments }) => {
   const { user } = useContext(UserContext);

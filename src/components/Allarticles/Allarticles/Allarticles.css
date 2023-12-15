@@ -1,0 +1,18 @@
+#articles_list{
+    padding: 0;
+    list-style-type: none;
+  }
+
+  #sort_by{
+    border-radius: 5px;
+    margin: 5px;
+    margin-bottom: 15px;
+    border: 2px solid navy;
+background-color: transparent;
+  }
+  
+  #order_by{
+    border-radius: 5px;
+    border: 2px solid navy;
+    background-color: transparent;
+  }

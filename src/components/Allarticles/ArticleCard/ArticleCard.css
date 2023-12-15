@@ -1,0 +1,26 @@
+.article_card {
+  border: 3px solid lightblue;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.art_title {
+  text-decoration: underline;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.art_img {
+  width: 280px;
+  border: 3px solid lightblue;
+  margin-bottom: 10px;
+}
+
+.art_link{
+    border: 2px solid lightblue;
+    background-color: rgb(199, 232, 243) ;
+    border-radius: 5px;
+    color: navy;
+    padding: 3px;
+    padding-top: 0;
+}

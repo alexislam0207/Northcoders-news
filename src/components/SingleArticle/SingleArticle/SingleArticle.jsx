@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { getComments, getSingleArticle } from "../../api";
-import ArticleDeatils from "./ArticleDetails";
-import Comments from "./Comments";
-import PostComment from "./PostComment";
+import { getComments, getSingleArticle } from "../../../api";
+import ArticleDeatils from "../ArticleDetails/ArticleDetails";
+import Comments from "../Comments/Comments";
+import PostComment from "../PostComment/PostComment";
 import { useParams } from "react-router-dom";
-import Error from "../Error";
+import Error from "../../Error/Error";
+import "./SingleArticle.css";
 
 const SingleArticle = () => {
   const { article_id } = useParams();

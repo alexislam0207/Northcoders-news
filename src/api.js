@@ -3,11 +3,14 @@ const newsApi = axios.create({
   baseURL: "https://alexis-news-server.onrender.com/api",
 });
 
-export const getAllArticles = (topic) => {
+export const getAllArticles = (topic, query, order, page) => {
   return newsApi
     .get("/articles", {
       params: {
         topic: topic !== "all-articles" ? topic : null,
+        sort_by: query,
+        order: order,
+        p: page
       },
     })
     .then((response) => {

@@ -5,6 +5,7 @@ A front-end news application created with React.js, Javascript, HTML and CSS. Us
 
 ## Link to deployed version
 https://alexis-northcoders-news.netlify.app
+* The back-end API is hosted on a free service and it might take a few minutes to load initially. Thank you for your patient.
 
 ## Link to the back-end repo
 https://github.com/alexislam0207/news-server
